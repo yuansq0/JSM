@@ -1,47 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="一个简单的网页模板">
-    <meta name="keywords" content="HTML, 网页, 示例">
-    <title>我的网页</title>
+    <title>JSM</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
             color: #333;
         }
         header {
-            background-color: #007BFF;
+            background-color: #4CAF50;
             color: white;
-            padding: 1rem 0;
+            padding: 20px 0;
             text-align: center;
+            position: relative;
         }
-        nav {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            text-align: center;
+        .translate {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 14px;
         }
-        nav a {
-            margin: 0 1rem;
-            color: #007BFF;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
+        .translate select {
+            padding: 5px;
         }
         main {
-            padding: 2rem;
             text-align: center;
+            padding: 20px;
         }
         footer {
-            background-color: #343a40;
+            background-color: #333;
             color: white;
-            text-align: center;
-            padding: 1rem 0;
+            padding: 10px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -50,29 +44,46 @@
 </head>
 <body>
     <header>
-        <h1>欢迎来到我的网页</h1>
+        <h1 id="page-title">欢迎来到JSM网页</h1>
+        <div class="translate">
+            <label for="language"></label>
+            <select id="language" onchange="translatePage()">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+                <option value="ms">Bahasa Melayu</option>
+            </select>
+        </div>
     </header>
-    <nav>
-        <a href="#section1">关于我</a>
-        <a href="#section2">我的作品</a>
-        <a href="#section3">联系我们</a>
-    </nav>
     <main>
-        <section id="section1">
-            <h2>关于我</h2>
-            <p>这是一个关于我的介绍。</p>
-        </section>
-        <section id="section2">
-            <h2>我的作品</h2>
-            <p>这里展示了我的一些作品。</p>
-        </section>
-        <section id="section3">
-            <h2>联系我们</h2>
-            <p>如果有任何问题，请随时联系我们。</p>
-        </section>
+        <p id="content-1">这是一个简单的网页示例，使用HTML和CSS编写。</p>
+        <p id="content-2">你可以在这里添加更多内容。</p>
     </main>
     <footer>
-        <p>版权所有 &copy; 2024</p>
+        <p id="footer">版权所有 &copy; 2024 JSM</p>
     </footer>
+
+    <script>
+        function translatePage() {
+            const language = document.getElementById("language").value;
+
+            // 根据选择的语言替换文本内容
+            if (language === "en") {
+                document.getElementById("page-title").textContent = "Welcome to the JSM webpage";
+                document.getElementById("content-1").textContent = "This is a simple webpage example built with HTML and CSS.";
+                document.getElementById("content-2").textContent = "We haven't added anything yet";
+                document.getElementById("footer").textContent = "Copyright © 2024 JSM";
+            } else if (language === "zh") {
+                document.getElementById("page-title").textContent = "欢迎来到JSM网页";
+                document.getElementById("content-1").textContent = "这是一个简单的网页示例，使用HTML和CSS编写。";
+                document.getElementById("content-2").textContent = "我们尚未添加任何内容。";
+                document.getElementById("footer").textContent = "版权所有 © 2024 JSM";
+            } else if (language === "ms") {
+                document.getElementById("page-title").textContent = "Selamat datang ke laman web JSM";
+                document.getElementById("content-1").textContent = "Ini adalah contoh laman web ringkas yang dibina dengan HTML dan CSS.";
+                document.getElementById("content-2").textContent = "Kami belum menambah apa-apa lagi";
+                document.getElementById("footer").textContent = "Hak Cipta © 2024 JSM";
+            }
+        }
+    </script>
 </body>
 </html>
