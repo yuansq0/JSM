@@ -11,25 +11,14 @@
             padding: 0;
             background-color: #f0f0f0;
             color: #333;
+            text-align: center;
         }
         header {
             background-color: #4CAF50;
             color: white;
             padding: 20px 0;
-            text-align: center;
-            position: relative;
-        }
-        .translate {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 14px;
-        }
-        .translate select {
-            padding: 5px;
         }
         main {
-            text-align: center;
             padding: 20px;
         }
         footer {
@@ -44,46 +33,14 @@
 </head>
 <body>
     <header>
-        <h1 id="page-title">欢迎来到JSM网页</h1>
-        <div class="translate">
-            <label for="language"></label>
-            <select id="language" onchange="translatePage()">
-                <option value="zh">中文</option>
-                <option value="en">English</option>
-                <option value="ms">Bahasa Melayu</option>
-            </select>
-        </div>
+        <h1>欢迎来到JSM网页</h1>
     </header>
     <main>
-        <p id="content-1">这是一个简单的网页示例，使用HTML和CSS编写。</p>
-        <p id="content-2">你可以在这里添加更多内容。</p>
+        <p>这是一个简单的网页示例，使用HTML和CSS编写。</p>
+        <p>你可以在这里添加更多内容。</p>
     </main>
     <footer>
-        <p id="footer">版权所有 &copy; 2024 JSM</p>
+        <p>版权所有 &copy; 2024 JSM</p>
     </footer>
-
-    <script>
-        function translatePage() {
-            const language = document.getElementById("language").value;
-
-            // 根据选择的语言替换文本内容
-            if (language === "en") {
-                document.getElementById("page-title").textContent = "Welcome to the JSM webpage";
-                document.getElementById("content-1").textContent = "This is a simple webpage example built with HTML and CSS.";
-                document.getElementById("content-2").textContent = "You can add more content here.";
-                document.getElementById("footer").textContent = "Copyright © 2024 JSM";
-            } else if (language === "zh") {
-                document.getElementById("page-title").textContent = "欢迎来到JSM网页";
-                document.getElementById("content-1").textContent = "这是一个简单的网页示例，使用HTML和CSS编写。";
-                document.getElementById("content-2").textContent = "你可以在这里添加更多内容。";
-                document.getElementById("footer").textContent = "版权所有 © 2024 JSM";
-            } else if (language === "ms") {
-                document.getElementById("page-title").textContent = "Selamat datang ke laman web JSM";
-                document.getElementById("content-1").textContent = "Ini adalah contoh laman web ringkas yang dibina dengan HTML dan CSS.";
-                document.getElementById("content-2").textContent = "Anda boleh menambah lebih banyak kandungan di sini.";
-                document.getElementById("footer").textContent = "Hak Cipta © 2024 JSM";
-            }
-        }
-    </script>
 </body>
 </html>
