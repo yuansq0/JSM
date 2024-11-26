@@ -17,26 +17,39 @@
             background-color: #4CAF50;
             color: white;
             padding: 20px 0;
+            display: none; /* 默认隐藏 */
         }
         main {
             padding: 20px;
+            display: none; /* 默认隐藏 */
         }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 600px;
-            margin: 20px auto;
+        .login-form {
+            max-width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .grid-item p {
-            margin-top: 10px;
+        .login-form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             font-size: 14px;
-            color: #666;
+        }
+        .login-form button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #45a049;
         }
         footer {
             background-color: #333;
@@ -45,17 +58,63 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+            display: none; /* 默认隐藏 */
         }
     </style>
 </head>
 <body>
+    <!-- 登录表单 -->
+    <div class="login-form">
+        <h2>登录</h2>
+        <form onsubmit="return checkLogin()">
+            <input type="text" id="username" placeholder="用户名" required>
+            <input type="password" id="password" placeholder="密码" required>
+            <button type="submit">登录</button>
+        </form>
+    </div>
+
+    <!-- 隐藏的网页内容 -->
     <header>
         <h1>欢迎来到JSM网页</h1>
     </header>
     <main>
         <p>暂时不支持翻译，为了确保快速做完网页我们会先把翻译给消。</p>
+    </main>
     <footer>
         <p style="font-size: 12px;">版权所有 &copy; 2024 JSM</p>
     </footer>
+
+    <script>
+        // 用简单加密后的字符串存储用户名和密码
+        const encryptedUsername = "NjY2"; 
+        const encryptedPassword = "NTU1"; Base64
+
+        function decodeBase64(encoded) {
+            return atob(encoded); // Base64 解码
+        }
+
+        function checkLogin() {
+            // 获取用户输入的用户名和密码
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // 验证用户名和密码
+            if (
+                username === decodeBase64(encryptedUsername) &&
+                password === decodeBase64(encryptedPassword)
+            ) {
+                // 显示网页内容
+                document.querySelector('.login-form').style.display = 'none';
+                document.querySelector('header').style.display = 'block';
+                document.querySelector('main').style.display = 'block';
+                document.querySelector('footer').style.display = 'block';
+                return false; // 阻止表单默认提交行为
+            } else {
+                alert('用户名或密码错误，请重试！');
+                return false; // 阻止表单默认提交行为
+            }
+        }
+    </script>
 </body>
 </html>
+我有guthub开网页怎么隐藏密码不会被发现
