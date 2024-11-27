@@ -9,7 +9,7 @@ VALID_PASSWORD = "nngf2"
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/login', methods=['POST'])
 def login():
