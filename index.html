@@ -75,26 +75,33 @@
         <p id="error-message" class="error-message"></p>
     </div>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault(); // 阻止表单默认提交行为
+
+            // 模拟存储的用户名和加密后的密码
+            const storedUsername = "sqy";
+            const storedPasswordHash = "3548"; // 假设的简单哈希值
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // 发送请求到后端
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
-            });
+            // 简单的密码加密函数
+            function hashPassword(password) {
+                let hash = 0;
+                for (let i = 0; i < password.length; i++) {
+                    hash += password.charCodeAt(i); // 简单的字符加总
+                }
+                return hash.toString();
+            }
 
-            const result = await response.json();
+            const hashedInputPassword = hashPassword(password);
+
             const errorMessage = document.getElementById('error-message');
-
-            if (result.success) {
+            if (username === storedUsername && hashedInputPassword === storedPasswordHash) {
                 alert('登录成功！');
                 errorMessage.textContent = '';
-                // 跳转到下一页面
-                window.location.href = "dashboard.html";
+                // 在 GitHub Pages 中可以跳转到另一个静态页面
+                window.location.href = "success.html";
             } else {
                 errorMessage.textContent = '用户名或密码错误！';
             }
