@@ -10,7 +10,7 @@ VALID_PASSWORD_HASH = generate_password_hash("qq")  # 加密存储密码
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/login', methods=['POST'])
 def login():
